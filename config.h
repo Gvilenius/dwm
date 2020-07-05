@@ -77,16 +77,23 @@ static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34
 static const char *browsecmd[] = {"chromium", NULL}; 
 static const char *musiccmd[] = {"netease-cloud-music", NULL}; 
 
+static const char *steamcmd[] = {"steam", NULL}; 
+
 static const char *upvol[]   = { "/home/v/.dwm/vol-up.sh",  NULL };
 static const char *downvol[] = { "/home/v/.dwm/vol-down.sh",  NULL };
 static const char *mutevol[] = { "/home/v/.dwm/vol-toggle.sh",  NULL };
+static const char *downlight[] = { "/home/v/.dwm/light-down.sh",  NULL };
+static const char *uplight[] = { "/home/v/.dwm/light-up.sh",  NULL };
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY|ShiftMask,             XK_d,      spawn,          {.v = dmenucmd } },
+	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
+    {0,                             XF86XK_MonBrightnessDown,spawn,{ .v = downlight} },
+    {0,                             XF86XK_MonBrightnessUp,spawn,{ .v = uplight} },
     {0,                             XF86XK_AudioLowerVolume,spawn,{ .v = downvol} },
     {0,                             XF86XK_AudioMute,spawn,{ .v = mutevol} },
     {0,                             XF86XK_AudioRaiseVolume,spawn,{ .v = upvol} },
     { MODKEY|ControlMask,           XK_g,      spawn,          {.v = browsecmd } },
+    { MODKEY|ControlMask,           XK_s,      spawn,          {.v = steamcmd} },
 	{ MODKEY|ControlMask,           XK_m,      spawn,          {.v = musiccmd } },
 	{ MODKEY,                       XK_grave,  togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY,    	                XK_Return, spawn,          {.v = termcmd } },
@@ -97,8 +104,8 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_k,      rotatestack,    {.i = -1 } },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_i,      incnmaster,     {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY|ShiftMask,             XK_Return, zoom,           {0} },
@@ -125,7 +132,7 @@ static Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
-	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	{ MODKEY|ShiftMask|ControlMask,             XK_q,      quit,           {0} },
 };
 
 /* button definitions */

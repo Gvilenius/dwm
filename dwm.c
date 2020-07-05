@@ -2167,7 +2167,6 @@ void showwin(const Arg *arg){
 			restack(selmon);
 			for (int j = i; i < hiddenWinStackTop; ++j)
 				hiddenWinStack[j] = hiddenWinStack[j+1];
-	
 			--hiddenWinStackTop;
 			return;
 		}
