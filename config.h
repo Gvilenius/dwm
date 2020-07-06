@@ -74,10 +74,13 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "st", NULL };
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
-static const char *browsecmd[] = {"chromium", NULL}; 
+static const char *browsecmd[] = {"google-chrome-stable", NULL}; 
 static const char *musiccmd[] = {"netease-cloud-music", NULL}; 
 
 static const char *steamcmd[] = {"steam", NULL}; 
+static const char *wpcmd[] = {"/home/v/.dwm/switch_wallpaper.sh", NULL}; 
+static const char *screenshotcmd[] = {"/home/v/.dwm/screenshot.sh", NULL}; 
+static const char *lockcmd[] = {"/home/v/.dwm/lock.sh", NULL}; 
 
 static const char *upvol[]   = { "/home/v/.dwm/vol-up.sh",  NULL };
 static const char *downvol[] = { "/home/v/.dwm/vol-down.sh",  NULL };
@@ -87,6 +90,11 @@ static const char *uplight[] = { "/home/v/.dwm/light-up.sh",  NULL };
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
+	{ MODKEY|ShiftMask,             XK_l,      spawn,          {.v = lockcmd } },
+	{ MODKEY,                       XK_a,      spawn,          SHCMD("maim -s |xclip -selection clipoard -t image/png")},
+
+	{ MODKEY,                       XK_o,      spawn,          {.v = screenshotcmd} },
+	{ MODKEY,                       XK_p,      spawn,          {.v = wpcmd} },
     {0,                             XF86XK_MonBrightnessDown,spawn,{ .v = downlight} },
     {0,                             XF86XK_MonBrightnessUp,spawn,{ .v = uplight} },
     {0,                             XF86XK_AudioLowerVolume,spawn,{ .v = downvol} },
@@ -112,7 +120,7 @@ static Key keys[] = {
 	{ MODKEY, 	        	        XK_Tab,    view,           {0} },
 	{ MODKEY,                 		XK_q,      killclient,     {0} },
 	{ MODKEY,             	    	XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY|ShiftMask,                       XK_f,      setlayout,      {.v = &layouts[1]} },
+	{ MODKEY|ShiftMask,             XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                       XK_f,      fullscreen,     {0} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
