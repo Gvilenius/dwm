@@ -74,7 +74,7 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "st", NULL };
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
-static const char *browsecmd[] = {"google-chrome-stable", NULL}; 
+static const char *browsecmd[] = {"firefox", NULL}; 
 static const char *musiccmd[] = {"netease-cloud-music", NULL}; 
 
 static const char *steamcmd[] = {"steam", NULL}; 
@@ -91,7 +91,7 @@ static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_l,      spawn,          {.v = lockcmd } },
-	{ MODKEY,                       XK_a,      spawn,          SHCMD("maim -s |xclip -selection clipoard -t image/png")},
+	{ Mod1Mask,                       XK_a,      spawn,          SHCMD("maim -s ~/temp.jpg && xclip -selection clipoard -t image/png ~/temp.jpg")},
 
 	{ MODKEY,                       XK_o,      spawn,          {.v = screenshotcmd} },
 	{ MODKEY,                       XK_p,      spawn,          {.v = wpcmd} },
