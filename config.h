@@ -93,7 +93,8 @@ static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_l,      spawn,          {.v = lockcmd } },
-	{ Mod1Mask,                       XK_a,      spawn,          SHCMD("maim -s ~/temp.jpg && xclip -selection clipoard -t image/png ~/temp.jpg")},
+	{ Mod1Mask,                     XK_a,      spawn,          SHCMD("maim -s ~/temp.jpg && xclip -selection clipoard -t image/png ~/temp.jpg")},
+	{ MODKEY|ShiftMask|ControlMask, XK_s,      spawn,          SHCMD("shutdown now")},
 
 	{ MODKEY,                       XK_o,      spawn,          {.v = screenshotcmd} },
 	{ MODKEY,                       XK_p,      spawn,          {.v = wpcmd} },
